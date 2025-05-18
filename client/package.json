@@ -28,6 +28,11 @@
     "recharts": "^2.15.3",
     "redux-persist": "^6.0.0"
   },
+  "overrides": {
+    "redux-persist": {
+      "redux": "^5.0.0"
+    }
+  },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
