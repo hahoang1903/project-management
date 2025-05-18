@@ -3,15 +3,15 @@
 import { useAppSelector } from "@/lib/redux/store";
 import {
   AlertCircle,
-  AlertOctagon,
-  AlertTriangle,
   Briefcase,
+  CircleArrowDown,
+  CircleArrowUp,
+  DiamondMinus,
   Home,
   Layers3,
   Lock,
   Search,
   Settings,
-  ShieldAlert,
   User,
   Users,
 } from "lucide-react";
@@ -31,9 +31,9 @@ const sidebarLinks: SidebarLinkProps[] = [
 
 const priorityLinks: SidebarLinkProps[] = [
   { href: "/priority/urgent", icon: AlertCircle, label: "Urgent" },
-  { href: "/priority/high", icon: ShieldAlert, label: "High" },
-  { href: "/priority/medium", icon: AlertTriangle, label: "Medium" },
-  { href: "/priority/low", icon: AlertOctagon, label: "Low" },
+  { href: "/priority/high", icon: CircleArrowUp, label: "High" },
+  { href: "/priority/medium", icon: DiamondMinus, label: "Medium" },
+  { href: "/priority/low", icon: CircleArrowDown, label: "Low" },
   { href: "/priority/backlog", icon: Layers3, label: "Backlog" },
 ];
 
