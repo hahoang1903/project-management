@@ -10,29 +10,33 @@ on:
 jobs:
   client_code_linting:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Checkout client code
-        run: cd client
-
       - name: Setup dependencies
         uses: ./.github/actions/npm-setup
+        with:
+          working-directory: client
 
       - name: Run ESLint
         run: npx eslint . --max-warnings 0
   client_build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: client
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Checkout client code
-        run: cd client
-
       - name: Setup dependencies
         uses: ./.github/actions/npm-setup
+        with:
+          working-directory: client
 
       - name: Build
         run: npm run build
