@@ -40,3 +40,35 @@ jobs:
 
       - name: Build
         run: npm run build
+  server_code_linting:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup dependencies
+        uses: ./.github/actions/npm-setup
+        with:
+          working-directory: server
+
+      - name: Run ESLint
+        run: npx eslint . --max-warnings 0
+  server_build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: server
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup dependencies
+        uses: ./.github/actions/npm-setup
+        with:
+          working-directory: server
+
+      - name: Build
+        run: npm run build
