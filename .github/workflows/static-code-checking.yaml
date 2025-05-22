@@ -70,5 +70,8 @@ jobs:
         with:
           working-directory: server
 
+      - name: Generate Prisma
+        run: npm run db:generate
+
       - name: Build
         run: npm run build

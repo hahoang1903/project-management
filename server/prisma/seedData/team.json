@@ -1,0 +1,32 @@
+[
+  {
+    "id": "4a1f7a0e-1c2b-4a4a-baaa-85d840debbf1",
+    "teamName": "Alpha Team",
+    "productOwnerId": "c1e2baf0-12b3-4db8-90b2-7ec2b122a3af",
+    "projectManagerId": "d8fce0d9-7b6c-4d3c-8e53-8b22307e6173"
+  },
+  {
+    "id": "5bd2f2f4-0ff9-4c0f-84f5-3047fc9f2284",
+    "teamName": "Beta Squad",
+    "productOwnerId": "76b4bb42-162b-4c8a-8f0a-b67f3f5ad2c4",
+    "projectManagerId": "1279c5a7-1c72-4075-b7e3-1689c0a7b8e2"
+  },
+  {
+    "id": "c5a5c02c-176d-4056-85d2-20d9f56e2a7d",
+    "teamName": "Gamma Force",
+    "productOwnerId": "9aeb3cd7-7be2-4d7a-9e17-daa6d0f3c04b",
+    "projectManagerId": "57c1b228-b1ff-4c83-9021-44de304e171d"
+  },
+  {
+    "id": "35a74a12-92bb-4c6e-a9c0-6f6e3f2e4b4b",
+    "teamName": "Delta Crew",
+    "productOwnerId": "f5d6e803-493e-4c9c-bbdd-8ab2c2c3e9f1",
+    "projectManagerId": "61bbeb5c-3fd9-4a71-81bc-e9d7e5678dd1"
+  },
+  {
+    "id": "03c50d66-799d-4d3f-a8cd-bb68ac1e3ae7",
+    "teamName": "Epsilon Unit",
+    "productOwnerId": "1b3ea9f2-16a4-4e1f-bf21-78a849fa8b5c",
+    "projectManagerId": "9c82ab7a-940e-4b3c-b0e4-6e6c464c7837"
+  }
+]

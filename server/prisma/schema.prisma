@@ -1,0 +1,108 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  userId            String       @id @default(uuid()) @db.Uuid
+  cognitoId         String       @unique
+  username          String       @unique @db.VarChar(255)
+  profilePictureUrl String?
+  teamId            String?      @db.Uuid
+  authoredTasks     Task[]       @relation("TaskAuthor")
+  assignedTasks     Task[]       @relation("TaskAssignee")
+  attachments       Attachment[]
+  comments          Comment[]
+  team              Team?        @relation(fields: [teamId], references: [id])
+}
+
+model Team {
+  id               String        @id @default(uuid()) @db.Uuid
+  teamName         String        @unique @db.VarChar(255)
+  productOwnerId   String?       @db.Uuid
+  projectManagerId String?       @db.Uuid
+  projectTeams     ProjectTeam[]
+  users            User[]
+}
+
+model Project {
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String        @unique @db.VarChar(255)
+  description  String?
+  startDate    DateTime?     @db.Timestamptz()
+  endDate      DateTime?     @db.Timestamptz()
+  tasks        Task[]
+  projectTeams ProjectTeam[]
+}
+
+model ProjectTeam {
+  id        String  @id @default(uuid()) @db.Uuid
+  teamId    String  @db.Uuid
+  projectId String  @db.Uuid
+  team      Team    @relation(fields: [teamId], references: [id])
+  project   Project @relation(fields: [projectId], references: [id])
+}
+
+model Task {
+  id          String       @id @default(uuid()) @db.Uuid
+  title       String       @unique @db.VarChar(255)
+  description String
+  status      TaskStatus   @default(TODO)
+  priority    TaskPriority @default(MEDIUM)
+  tags        String?
+  startDate   DateTime?    @db.Timestamptz()
+  dueDate     DateTime?    @db.Timestamptz()
+  points      Int?
+  projectId   String       @db.Uuid
+  authorId    String       @db.Uuid
+  assigneeId  String?      @db.Uuid
+  project     Project      @relation(fields: [projectId], references: [id])
+  author      User         @relation("TaskAuthor", fields: [authorId], references: [userId])
+  assignee    User?        @relation("TaskAssignee", fields: [assigneeId], references: [userId])
+  attachments Attachment[]
+  comments    Comment[]
+}
+
+model Attachment {
+  id           String @id @default(uuid()) @db.Uuid
+  fileUrl      String
+  fileName     String @unique @db.VarChar(255)
+  taskId       String @db.Uuid
+  uploadedById String @db.Uuid
+  task         Task   @relation(fields: [taskId], references: [id])
+  uploadedBy   User   @relation(fields: [uploadedById], references: [userId])
+}
+
+model Comment {
+  id     String @id @default(uuid()) @db.Uuid
+  text   String
+  taskId String @db.Uuid
+  userId String @db.Uuid
+  task   Task   @relation(fields: [taskId], references: [id])
+  user   User   @relation(fields: [userId], references: [userId])
+}
+
+enum TaskStatus {
+  TODO
+  INPROGRESS
+  REVIEW
+  COMPLETED
+}
+
+enum TaskPriority {
+  URGENT
+  HIGH
+  MEDIUM
+  LOW
+}

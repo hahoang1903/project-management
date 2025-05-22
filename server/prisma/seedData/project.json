@@ -1,0 +1,72 @@
+[
+  {
+    "id": "f5fbd7c9-33d0-487f-bce2-7fa214d3dcfb",
+    "name": "Apollo CRM Revamp",
+    "description": "Redesign and implement new features for the Apollo customer relationship management platform.",
+    "startDate": "2024-11-01T09:00:00Z",
+    "endDate": "2025-04-30T18:00:00Z"
+  },
+  {
+    "id": "b34a177e-fc2d-4564-b3a2-1f310a98241c",
+    "name": "Neptune Mobile App",
+    "description": "Development of a cross-platform mobile application for Neptune water tracking system.",
+    "startDate": "2025-01-15T10:00:00Z",
+    "endDate": "2025-07-01T17:00:00Z"
+  },
+  {
+    "id": "0e9d2c66-82bc-4de2-8d7e-362d3fcb7748",
+    "name": "Mercury Website Migration",
+    "description": "Migrate the legacy Mercury website to a modern Jamstack architecture.",
+    "startDate": "2024-10-10T08:30:00Z",
+    "endDate": "2025-01-30T17:00:00Z"
+  },
+  {
+    "id": "95d18e89-3723-4a6e-bbb9-33e038726fd1",
+    "name": "Venus Cloud Infrastructure",
+    "description": "Build scalable cloud infrastructure for Venus e-commerce services.",
+    "startDate": "2024-12-01T09:00:00Z",
+    "endDate": "2025-06-15T18:00:00Z"
+  },
+  {
+    "id": "9b92eaa5-34a4-4068-984a-32492c5e3ad7",
+    "name": "Jupiter Analytics Dashboard",
+    "description": "Create a real-time analytics dashboard for Jupiter marketing campaigns.",
+    "startDate": "2025-02-01T09:00:00Z",
+    "endDate": "2025-05-30T17:00:00Z"
+  },
+  {
+    "id": "731e708e-f0fd-4662-9df2-90117a3f77e5",
+    "name": "Saturn AI Assistant",
+    "description": "Design and implement an AI-powered assistant for the Saturn project management suite.",
+    "startDate": "2024-11-20T10:00:00Z",
+    "endDate": "2025-08-01T17:00:00Z"
+  },
+  {
+    "id": "05d18e55-2a61-4c01-8c7d-e49cb7f4e931",
+    "name": "Pluto Data Lake",
+    "description": "Establish a data lake solution for large-scale data ingestion and analysis.",
+    "startDate": "2025-03-01T08:00:00Z",
+    "endDate": "2025-12-01T18:00:00Z"
+  },
+  {
+    "id": "61a7d97f-0c63-4762-a1ab-c30b426f71ff",
+    "name": "Orion Payment Gateway",
+    "description": "Develop a secure and scalable payment gateway for Orion financial services.",
+    "startDate": "2025-01-01T09:00:00Z",
+    "endDate": "2025-06-30T18:00:00Z"
+  },
+  {
+    "id": "f3dbfba9-568b-4c3b-92bc-35a91a7f3fd1",
+    "name": "Nova Internal Tools",
+    "description": "Revamp the internal tools used by the Nova operations team to improve workflow efficiency.",
+    "startDate": "2024-12-15T10:00:00Z",
+    "endDate": "2025-05-01T17:00:00Z"
+  },
+  {
+    "id": "c9b9b1b5-1d7c-4eb1-8d95-cb18ee7bb476",
+    "name": "Helios Performance Optimization",
+    "description": "Optimize the performance of the Helios backend systems and APIs.",
+    "startDate": "2025-02-20T09:30:00Z",
+    "endDate": "2025-09-01T18:00:00Z"
+  }
+]
