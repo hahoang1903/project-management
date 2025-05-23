@@ -1,0 +1,8 @@
+model Team {
+  id               String        @id @default(uuid()) @db.Uuid
+  teamName         String        @unique @db.VarChar(255)
+  productOwnerId   String?       @db.Uuid
+  projectManagerId String?       @db.Uuid
+  projectTeams     ProjectTeam[]
+  users            User[]
+}
