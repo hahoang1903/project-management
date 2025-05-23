@@ -1,0 +1,7 @@
+model ProjectTeam {
+  id        String  @id @default(uuid()) @db.Uuid
+  teamId    String  @db.Uuid
+  projectId String  @db.Uuid
+  team      Team    @relation(fields: [teamId], references: [id])
+  project   Project @relation(fields: [projectId], references: [id])
+}

@@ -8,7 +8,9 @@
     "build": "rimraf dist && npx tsc",
     "start": "npm run build && node dist/index.js",
     "dev": "npm run build && concurrently \"npx tsc -w\" \"nodemon --exec ts-node index.ts\"",
-    "seed": "ts-node prisma/seed.ts"
+    "db:generate": "npx prisma generate --schema=./prisma",
+    "db:migrate": "npx prisma migrate dev",
+    "db:seed": "ts-node prisma/seed.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,0 +1,9 @@
+model Project {
+  id           String        @id @default(uuid()) @db.Uuid
+  name         String        @unique @db.VarChar(255)
+  description  String?
+  startDate    DateTime?     @db.Timestamptz()
+  endDate      DateTime?     @db.Timestamptz()
+  tasks        Task[]
+  projectTeams ProjectTeam[]
+}
