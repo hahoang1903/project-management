@@ -1,20 +1,21 @@
 import "server-only";
 
+import type { AppRouter } from "server/routers";
 import {
   createTRPCOptionsProxy,
   TRPCQueryOptions,
 } from "@trpc/tanstack-react-query";
 import { cache } from "react";
-import { createContext } from "server/trpc";
-import { appRouter } from "server/routers";
 import { makeQueryClient } from "./query-client";
+import { createTRPCClient, httpBatchLink } from "@trpc/client";
 
 export const getQueryClient = cache(makeQueryClient);
 
 export const trpc = createTRPCOptionsProxy({
-  router: appRouter,
+  client: createTRPCClient<AppRouter>({
+    links: [httpBatchLink({ url: process.env.NEXT_PUBLIC_TRPC_URL! })],
+  }),
   queryClient: getQueryClient,
-  ctx: createContext,
 });
 
 export const prefetch = <T extends ReturnType<TRPCQueryOptions<any>>>(

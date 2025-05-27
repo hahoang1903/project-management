@@ -2,4 +2,6 @@
 
 .env*
 
-generated
+/generated
+
+/dist
