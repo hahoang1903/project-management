@@ -8,70 +8,37 @@ on:
       - main
 
 jobs:
-  client_code_linting:
+  code_linting:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: client
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup dependencies
         uses: ./.github/actions/npm-setup
-        with:
-          working-directory: client
 
-      - name: Run ESLint
+      - name: Linting client code using ESLint
         run: npx eslint . --max-warnings 0
-  client_build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
         working-directory: client
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Setup dependencies
-        uses: ./.github/actions/npm-setup
-        with:
-          working-directory: client
-
-      - name: Build
-        run: npm run build
-  server_code_linting:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: server
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup dependencies
-        uses: ./.github/actions/npm-setup
-        with:
-          working-directory: server
-
-      - name: Run ESLint
+      - name: Linting server code using ESLint
         run: npx eslint . --max-warnings 0
-  server_build:
-    runs-on: ubuntu-latest
-    defaults:
-      run:
         working-directory: server
+  build:
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
       - name: Setup dependencies
         uses: ./.github/actions/npm-setup
-        with:
-          working-directory: server
 
-      - name: Generate Prisma
-        run: npm run db:generate
-
-      - name: Build
+      - name: Build server
         run: npm run build
+        working-directory: server
+
+      - name: Build client
+        run: npm run build
+        working-directory: client
+        env:
+          NEXT_PUBLIC_TRPC_URL: dummy
