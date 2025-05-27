@@ -8,7 +8,7 @@ on:
       - main
 
 jobs:
-  client_code_linting:
+  code_linting:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,34 +17,14 @@ jobs:
       - name: Setup dependencies
         uses: ./.github/actions/npm-setup
 
-      - name: Run ESLint
+      - name: Linting client code using ESLint
         run: npx eslint . --max-warnings 0
         working-directory: client
-  client_build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
 
-      - name: Setup dependencies
-        uses: ./.github/actions/npm-setup
-
-      - name: Build
-        run: npm run build
-        working-directory: client
-  server_code_linting:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Setup dependencies
-        uses: ./.github/actions/npm-setup
-
-      - name: Run ESLint
+      - name: Linting server code using ESLint
         run: npx eslint . --max-warnings 0
         working-directory: server
-  server_build:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -53,6 +33,10 @@ jobs:
       - name: Setup dependencies
         uses: ./.github/actions/npm-setup
 
-      - name: Build
+      - name: Build server
         run: npm run build
         working-directory: server
+
+      - name: Build client
+        run: npm run build
+        working-directory: client
