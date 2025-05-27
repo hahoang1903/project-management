@@ -40,3 +40,5 @@ jobs:
       - name: Build client
         run: npm run build
         working-directory: client
+        env:
+          NEXT_PUBLIC_TRPC_URL: dummy
