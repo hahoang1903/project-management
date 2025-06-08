@@ -10,6 +10,7 @@ import {
 import Header from "@/components/layout/header";
 import { format } from "date-fns";
 import SpanWithTooltip from "@/components/span-with-tooltip";
+import { selectIsDarkMode } from "@/lib/redux/selector";
 
 type TableTabProps = {
   tasks: Task[];
@@ -95,7 +96,7 @@ const columns: GridColDef[] = [
 ];
 
 const TableTab = ({ tasks, setIsModalNewTaskOpen }: TableTabProps) => {
-  const isDarkMode = useAppSelector((state) => state.ui.isDarkMode);
+  const isDarkMode = useAppSelector(selectIsDarkMode);
 
   const openModal = () => setIsModalNewTaskOpen(true);
 

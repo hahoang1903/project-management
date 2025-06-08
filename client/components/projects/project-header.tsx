@@ -9,12 +9,29 @@ import {
 } from "lucide-react";
 import Header from "../layout/header";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
+import { selectProjectsStatus, selectProjectById } from "@/lib/redux/selector";
+import { notFound } from "next/navigation";
+import ProjectTitleSkeleton from "../skeleton/project-title-skeleton";
 
-const ProjectHeader = () => {
+const ProjectHeader = ({ id }: { id: string }) => {
+  const project = useAppSelector((state) => selectProjectById(state, id));
+  const status = useAppSelector(selectProjectsStatus);
+
+  if (!project && status === "success") return notFound();
+
   return (
     <div className="flex-shrink-0">
       <div className="pt-6 pb-6 @2xl:pt-8 @2xl:pb-8">
-        <Header name="Product Design Development" />
+        {status === "pending" ? (
+          <ProjectTitleSkeleton />
+        ) : (
+          <>
+            <Header name={project?.name ?? "Project Management"} />
+            <p className="py-2 text-sm text-neutral-500 @2xl:text-base dark:text-neutral-400">
+              {project?.description}
+            </p>
+          </>
+        )}
       </div>
 
       <div className="project-tab">

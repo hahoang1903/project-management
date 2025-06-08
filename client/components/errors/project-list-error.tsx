@@ -1,7 +1,16 @@
+import { setProjectsStatus } from "@/lib/redux/project-state";
+import { useAppDispatch } from "@/lib/redux/store";
 import { HeartCrack } from "lucide-react";
+import { useEffect } from "react";
 import { FallbackProps } from "react-error-boundary";
 
 const ProjectListError = ({ resetErrorBoundary }: FallbackProps) => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(setProjectsStatus("error"));
+  }, [dispatch]);
+
   return (
     <div className="mx-8 my-4 flex gap-2 rounded-md border border-red-600 p-3">
       <HeartCrack className="size-5 flex-shrink-0 text-red-600 dark:text-red-400" />

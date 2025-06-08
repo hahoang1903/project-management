@@ -7,6 +7,7 @@ import {
 } from "gantt-task-react";
 import { useAppSelector } from "@/lib/redux/store";
 import { useState } from "react";
+import { selectIsDarkMode } from "@/lib/redux/selector";
 
 import "gantt-task-react/dist/index.css";
 import Header from "@/components/layout/header";
@@ -17,7 +18,7 @@ type GanttTabProps = {
 };
 
 const GanttTab = ({ tasks, setIsModalNewTaskOpen }: GanttTabProps) => {
-  const isDarkMode = useAppSelector((state) => state.ui.isDarkMode);
+  const isDarkMode = useAppSelector(selectIsDarkMode);
   const [displayOptions, setDisplayOptions] = useState<DisplayOption>({
     viewMode: ViewMode.Month,
     locale: "en-US",

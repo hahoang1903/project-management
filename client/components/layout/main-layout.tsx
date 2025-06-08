@@ -4,12 +4,16 @@ import React, { useEffect } from "react";
 import Sidebar from "./sidebar";
 import Navbar from "./navbar";
 import { useAppSelector } from "@/lib/redux/store";
+import {
+  selectIsDarkMode,
+  selectIsSidebarCollapsed,
+} from "@/lib/redux/selector";
+import { ToastContainer, Slide } from "react-toastify";
+import { TOAST_DISPLAY_TIMEOUT } from "@/lib/const";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
-  const isDarkMode = useAppSelector((state) => state.ui.isDarkMode);
-  const isSidebarCollapsed = useAppSelector(
-    (state) => state.ui.isSidebarCollapsed,
-  );
+  const isDarkMode = useAppSelector(selectIsDarkMode);
+  const isSidebarCollapsed = useAppSelector(selectIsSidebarCollapsed);
 
   useEffect(() => {
     if (isDarkMode) {
@@ -28,6 +32,15 @@ const MainLayout = ({ children }: { children: React.ReactNode }) => {
         <Navbar />
         {children}
       </main>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={TOAST_DISPLAY_TIMEOUT}
+        newestOnTop
+        closeOnClick
+        draggable={false}
+        theme={isDarkMode ? "dark" : "light"}
+        transition={Slide}
+      />
     </div>
   );
 };

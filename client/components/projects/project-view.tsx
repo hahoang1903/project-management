@@ -14,7 +14,7 @@ const ProjectView = ({ id }: { id: string }) => {
 
   return (
     <div className="flex flex-1 flex-col px-4 @6xl:px-6">
-      <ProjectHeader />
+      <ProjectHeader id={id} />
       <SafeQuerySuspense
         fallback={
           activeTab === "board" ? (

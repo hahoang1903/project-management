@@ -18,6 +18,7 @@ import {
   X,
 } from "lucide-react";
 import { setIsSidebarCollapsed } from "@/lib/redux/ui-state";
+import { selectIsSidebarCollapsed } from "@/lib/redux/selector";
 import Image from "next/image";
 import SidebarLink, { type SidebarLinkProps } from "./link";
 import SidebarFoldableSection from "./foldable-section";
@@ -44,9 +45,7 @@ const priorityLinks: SidebarLinkProps[] = [
 ];
 
 const Sidebar = () => {
-  const isSidebarCollapsed = useAppSelector(
-    (state) => state.ui.isSidebarCollapsed,
-  );
+  const isSidebarCollapsed = useAppSelector(selectIsSidebarCollapsed);
   const dispatch = useAppDispatch();
 
   const closeSidebar = () => {

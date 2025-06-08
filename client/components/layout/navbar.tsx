@@ -4,13 +4,15 @@ import Link from "next/link";
 import { Sidebar, Moon, Search, Settings, Sun, X } from "lucide-react";
 import { useAppDispatch, useAppSelector } from "@/lib/redux/store";
 import { setIsDarkMode, setIsSidebarCollapsed } from "@/lib/redux/ui-state";
+import {
+  selectIsDarkMode,
+  selectIsSidebarCollapsed,
+} from "@/lib/redux/selector";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
-  const isDarkMode = useAppSelector((state) => state.ui.isDarkMode);
-  const isSidebarCollapsed = useAppSelector(
-    (state) => state.ui.isSidebarCollapsed,
-  );
+  const isDarkMode = useAppSelector(selectIsDarkMode);
+  const isSidebarCollapsed = useAppSelector(selectIsSidebarCollapsed);
 
   const toggleSidebar = () => {
     dispatch(setIsSidebarCollapsed(!isSidebarCollapsed));

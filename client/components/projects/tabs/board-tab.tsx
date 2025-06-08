@@ -6,6 +6,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { taskStatuses } from "@/lib/utils/ui-utils";
+import { toast } from "react-toastify";
 import TaskColumn from "@/components/tasks/task-column";
 
 type BoardTabProps = {
@@ -22,6 +23,11 @@ const BoardTab = ({ id, tasks, setIsModalNewTaskOpen }: BoardTabProps) => {
     trpc.task.update.mutationOptions({
       onSuccess: () => {
         queryClient.invalidateQueries(trpc.task.getByProject.queryFilter(id));
+      },
+      onError: () => {
+        toast.error(
+          "Task update failed. It's being stubborn today. Try again in a bit!",
+        );
       },
     }),
   );
