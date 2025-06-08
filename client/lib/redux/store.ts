@@ -1,6 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import globalReducer from "./state";
+import uiReducer from "./ui-state";
+import projectReducer from "./project-state";
 
 import {
   persistReducer,
@@ -12,7 +13,6 @@ import {
   REGISTER,
 } from "redux-persist";
 import createWebStorage from "redux-persist/lib/storage/createWebStorage";
-import { api } from "./api";
 
 /* REDUX PERSISTENCE */
 const createNoopStorage = () => {
@@ -37,11 +37,11 @@ const storage =
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["global"],
+  whitelist: ["ui"],
 };
 const rootReducer = combineReducers({
-  global: globalReducer,
-  [api.reducerPath]: api.reducer,
+  ui: uiReducer,
+  project: projectReducer,
 });
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 
@@ -54,7 +54,7 @@ export const makeStore = () => {
         serializableCheck: {
           ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
         },
-      }).concat(api.middleware),
+      }),
   });
 };
 

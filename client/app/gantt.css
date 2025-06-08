@@ -1,0 +1,55 @@
+.gantt ._3_ygE {
+  @apply dark:border-stroke-dark rounded-tl-md border border-r-0 border-[#e6e4e4];
+}
+.gantt ._2eZzQ {
+  @apply dark:border-stroke-dark border-[#e6e4e4];
+}
+.gantt ._2dZTy {
+  @apply dark:fill-dark-secondary fill-white;
+}
+.gantt ._2dZTy:nth-child(even) {
+  @apply dark:fill-dark-tertiary fill-[#f5f5f5];
+}
+.gantt ._35nLX {
+  @apply dark:fill-dark-secondary dark:stroke-stroke-dark fill-white stroke-[#e6e4e4];
+}
+.gantt ._9w8d5 {
+  @apply fill-[#333] dark:fill-white;
+}
+.gantt ._34SS0 {
+  @apply dark:bg-dark-secondary bg-white;
+}
+.gantt ._34SS0:nth-of-type(even) {
+  @apply dark:bg-dark-tertiary bg-[#f5f5f5];
+}
+.gantt ._RuwuK,
+.gantt ._3rUKi,
+.gantt ._1rLuZ {
+  @apply dark:stroke-stroke-dark stroke-[#e6e4e4];
+}
+.gantt ._3ZbQT {
+  @apply dark:border-stroke-dark border-l-0 border-[#e6e4e4];
+}
+.gantt ._3T42e {
+  @apply dark:bg-dark-bg bg-white;
+}
+.gantt ._29NTg {
+  @apply dark:text-neutral-500;
+}
+
+.gantt ._2k9Ys {
+  @apply !ml-[calc(var(--spacing)*14*3+1px)] @2xl:!ml-[calc(var(--spacing)*28*3+1px)] @7xl:!ml-[calc(var(--spacing)*46*3+1px)];
+}
+
+.gantt ._3lLk3,
+.gantt ._WuQ0f {
+  @apply !max-w-14 !min-w-14 @2xl:!max-w-28 @2xl:!min-w-28 @7xl:!max-w-46 @7xl:!min-w-46;
+}
+
+.gantt ._3lLk3 {
+  @apply dark:border-l-stroke-dark border-l border-l-[#e6e4e4];
+}
+
+.gantt ._nI1Xw div {
+  @apply overflow-hidden text-ellipsis;
+}

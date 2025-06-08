@@ -4,6 +4,7 @@ import type { AppRouter } from "server/routers";
 import {
   createTRPCOptionsProxy,
   TRPCQueryOptions,
+  type inferOutput,
 } from "@trpc/tanstack-react-query";
 import { cache } from "react";
 import { makeQueryClient } from "./query-client";
@@ -28,3 +29,8 @@ export const prefetch = <T extends ReturnType<TRPCQueryOptions<any>>>(
     void queryClient.prefetchQuery(queryOptions);
   }
 };
+
+export type Project = inferOutput<typeof trpc.project.getAll>[number];
+export type Task = inferOutput<typeof trpc.task.getByProject>[number];
+export type TaskStatus = Task["status"];
+export type TaskPriority = Task["priority"];

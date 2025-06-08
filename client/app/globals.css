@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import "./gantt.css";
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
@@ -36,9 +36,33 @@
   .app {
     @apply size-full bg-white text-sm dark:bg-black;
   }
+
+  button {
+    @apply cursor-pointer;
+  }
 }
 
 @layer components {
+  .default-avatar {
+    @apply flex items-center justify-center rounded-full border border-neutral-500 bg-amber-100 dark:border-gray-600 dark:bg-gray-800 dark:text-white;
+  }
+
+  .try-again-btn {
+    @apply bg-black text-white hover:bg-gray-700 dark:bg-gray-100 dark:text-black dark:hover:bg-gray-200;
+  }
+
+  .primary-btn {
+    @apply rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 dark:bg-blue-700 hover:dark:bg-blue-600;
+  }
+
+  .select {
+    @apply dark:border-dark-secondary dark:bg-dark-secondary block w-full appearance-none rounded border border-gray-400 bg-white py-2 pr-8 pl-4 leading-tight shadow hover:border-gray-500 focus:ring focus:outline-none dark:text-white;
+  }
+
+  .skeleton {
+    @apply animate-pulse bg-gray-200 dark:bg-neutral-800;
+  }
+
   .navbar-btn {
     @apply flex size-10 cursor-pointer items-center justify-center rounded p-2 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700;
   }
@@ -48,7 +72,7 @@
   }
 
   .sidebar {
-    @apply fixed z-40 flex h-full w-64 flex-col justify-between overflow-y-auto bg-white shadow-xl transition-[left] duration-300 dark:bg-black;
+    @apply fixed z-40 flex h-full w-[290px] flex-col justify-between overflow-x-hidden overflow-y-auto bg-white shadow-xl transition-[left] duration-300 dark:bg-black;
   }
 
   .sidebar-link {
@@ -57,5 +81,41 @@
 
   .sidebar-link--active {
     @apply bg-gray-100 text-white dark:bg-gray-600;
+  }
+
+  .sidebar-link__text {
+    @apply text-gray-800 dark:text-gray-100;
+  }
+
+  .project-tab {
+    @apply dark:border-stroke-dark flex flex-wrap-reverse gap-2 overflow-x-auto border-y border-gray-200 pt-2 pb-[8px];
+  }
+
+  .project-tab-btn {
+    @apply relative flex w-24 cursor-pointer items-center justify-center gap-2 py-2 text-gray-500 after:absolute after:-bottom-[8px] after:left-0 after:h-[1px] after:w-full hover:text-blue-600 @6xl:w-32 @6xl:text-base dark:text-neutral-500 dark:hover:text-white;
+  }
+
+  .project-header-btn {
+    @apply cursor-pointer text-gray-500 hover:text-gray-600 dark:text-neutral-500 dark:hover:text-gray-300;
+  }
+
+  .project-header-search {
+    @apply dark:border-dark-secondary dark:bg-dark-secondary w-56 rounded-md border py-1 pr-4 pl-10 focus:outline-none @6xl:text-base dark:text-white;
+  }
+
+  .task-more-btn {
+    @apply flex h-6 items-center justify-center hover:text-gray-500 dark:text-neutral-500 dark:hover:text-neutral-300;
+  }
+
+  .task-tag {
+    @apply rounded-full px-2 py-1 text-xs lowercase;
+  }
+
+  .task-body-text {
+    @apply text-sm text-gray-500 dark:text-neutral-500;
+  }
+
+  .task-table {
+    @apply dark:border-stroke-dark dark:bg-dark-secondary border border-gray-200 bg-white shadow dark:text-gray-200;
   }
 }

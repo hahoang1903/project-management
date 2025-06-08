@@ -21,10 +21,8 @@ const SidebarLink = ({ href, icon: Icon, label }: SidebarLinkProps) => {
           <div className="absolute top-0 left-0 h-full w-[5px] bg-blue-200" />
         )}
 
-        <Icon className="size-6 text-gray-800 dark:text-gray-100" />
-        <span className="font-medium text-gray-800 dark:text-gray-100">
-          {label}
-        </span>
+        <Icon className="sidebar-link__text size-6 min-w-6" />
+        <span className="sidebar-link__text font-medium">{label}</span>
       </div>
     </Link>
   );

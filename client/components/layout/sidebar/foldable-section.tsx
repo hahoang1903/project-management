@@ -6,15 +6,13 @@ import React, { useState } from "react";
 type SidebarFoldableSectionProps = {
   title: string;
   children: React.ReactNode;
-  defaultExpanded?: boolean;
 };
 
 const SidebarFoldableSection = ({
   title,
   children,
-  defaultExpanded = false,
 }: SidebarFoldableSectionProps) => {
-  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleExpand = () => setIsExpanded((prev) => !prev);
 
@@ -30,7 +28,9 @@ const SidebarFoldableSection = ({
         />
       </button>
 
-      {isExpanded && children}
+      <div className={`${isExpanded ? "flex flex-col" : "hidden"}`}>
+        {children}
+      </div>
     </>
   );
 };
